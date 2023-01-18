@@ -34,8 +34,12 @@ func ParseRMOD(rm_byte byte) Mod_RM {
 	return mod_rm
 }
 
+func ParseSbit(opcode byte) byte {
+	return (opcode >> (8 - 1) & 1)
+}
+
 func ParseDbit(opcode byte) byte {
-	return ((opcode >> 6) & 0xF) << 7
+	return (opcode >> (7 - 1) & 1)
 }
 
 func (p *Pointer) NextOpcode() {
